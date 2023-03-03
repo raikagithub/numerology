@@ -52,5 +52,95 @@ margin-top: 8px;
   </p>
   
 </div>
+<script type="text/javascript">
+//create object 
+const lucky =[
+{luckyNos:"1",
+planet:"sun",
+day:"sunday",
+colour:"yellow",
+gems:"coral",
+luckyNmbr:"1 10 19 28 37 46 55 64 73 82 91",
+strength:"Indpendent, goal-orirnted, innovative,self-centered, freedom loving",
+weakness:"forcefull,doubtfull and risky",
+},
+{luckyNos:"2",
+planet:"sun",
+day:"sunday",
+colour:"blue and white",
+gems:"coral",
+luckyNmbr:"2 11 20 38 47 56 65 74 83",
+strength:"Intuitive,unifying, influencial, sensitive and coperative",
+weakness:"indecisive, easily hurt, unassertive",
+},
+{luckyNos:"3",
+planet:"sun",
+day:"sunday",
+colour:"blue and white",
+gems:"coral",
+luckyNmbr:"3 12 21 30 48 57 66 75 84 ",
+strength:"Intuitive,unifying, influencial, sensitive and coperative",
+weakness:"indecisive, easily hurt, unassertive",
+},
+{luckyNos:"4",
+planet:"mu2",
+day:"thursday",
+colour:"green",
+gems:"coral",
+luckyNmbr:"4 13 22 31 40 58 67 76 85 ",
+strength:"Intuitive,unifying, influencial, sensitive and coperative",
+weakness:"indecisive, easily hurt, unassertive",
+}
+];
+// Prompt the user to enter a date
+let date = prompt("Enter your date of Birth:");
+
+// Remove any non-alphanumeric characters from the date input
+let number = date.replace(/[^0-9a-z]/gi, '');
+
+// Define a function to calculate the digit sum of a number
+function digitSum(num) {
+  let sum = 0;
+  while (num > 0) {
+    sum += num % 10;
+    num = Math.floor(num / 10);
+  }
+  return sum;
+}
+
+// Calculate the digit sum of the input number until it becomes a single digit
+let result = digitSum(number);
+while (result > 9) {
+  result = digitSum(result);
+}
+//get element from html
+const heading =document.querySelector(".title");
+const rulePlanet = document.querySelector(".rule-planet");
+const luckyNumbers = document.querySelector(".lucky-num");
+const favColr = document.querySelector(".lucky-clr");
+const favGem = document.querySelector(".lucky-gem");
+const favDay = document.querySelector(".lucky-day");
+const strength = document.querySelector(".strength");
+const weakness = document.querySelector(".weakness");
+
+console.log(result.toString());
+//function to match 
+const chosenNmbr = lucky.find(numb => numb.luckyNos === result.toString());
+//assign element is true
+if(chosenNmbr){
+//title
+heading.textContent=`Your Life path number is ${chosenNmbr.luckyNos}`;
+//detail element
+rulePlanet.textContent=`Rulling Planet: ${chosenNmbr.planet}`;
+luckyNumbers.textContent=`Lucky Numbers: ${chosenNmbr.luckyNmbr}`;
+favColr.textContent=`Favourable colour: ${chosenNmbr.colour}`;
+favGem.textContent=`Lucky Gems: ${chosenNmbr.gems}`;
+favDay.textContent=`Lucky Day: ${chosenNmbr.day}`;
+strength.textContent=`Strenth: ${chosenNmbr.strength}`;
+weakness.textContent=`Weakness: ${chosenNmbr.weakness}`;
+}else{
+alert("no");
+};
+</script>
 </body>
 </html>
